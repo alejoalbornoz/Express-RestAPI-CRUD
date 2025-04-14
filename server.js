@@ -1,10 +1,19 @@
 const express = require("express");
 const morgan = require("morgan");
 
+
+
 const app = express();
+
+
+//Middleware
+
 app.use(morgan("dev"));
 app.use(express.json());
 
+
+
+//----------------------
 const products = [
   {
     id: 1,
@@ -12,6 +21,9 @@ const products = [
     price: 1000,
   },
 ];
+
+
+//Routes
 
 app.get("/products", (req, res) => {
   res.json(products);
@@ -63,5 +75,11 @@ app.get("/products/:id", (req, res) => {
   res.json(productFound);
 });
 
+
+//Settings
+app.set("appName", "Express RestAPI")
+app.set("port", 3000)
+
+
 app.listen(3000);
-console.log(`Server is listening on port http://localhost:3000`);
+console.log(`Server ${app.get("appName")} is listening on port http://localhost:${app.get("port")}`);
