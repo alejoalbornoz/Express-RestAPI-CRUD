@@ -19,6 +19,8 @@ app.use("/static", express.static(path.join(__dirname, "static")));
 
 //Settings
 app.set("appName", "Express RestAPI");
+app.set("view engine", "ejs")
+app.set("views", path.join(__dirname, "views"))
 app.set("port", 3000);
 
 app.listen(3000);

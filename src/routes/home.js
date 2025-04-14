@@ -1,6 +1,6 @@
-const express = require("express");
+const { Router } = require("express");
 
-const router = express.Router();
+const router = Router();
 
 const products = [
   {
@@ -9,6 +9,17 @@ const products = [
     price: 1000,
   },
 ];
+
+
+
+router.all("/", (req, res) =>{
+
+  const title = "Probando ejs"
+
+  res.render("index", {title})
+})
+
+
 
 router.get("/products", (req, res) => {
   res.json(products);
